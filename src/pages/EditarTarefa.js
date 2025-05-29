@@ -82,13 +82,13 @@ function EditarTarefa() {
 
             const response = await api.put(`/Tarefas/${id}`, tarefaAtualizada);
             
-            if (response.status === 204) {
-                showNotification("Tarefa atualizada com sucesso!");
+            if (response.data.isSuccess) {
+                showNotification(response.data.message || "Tarefa atualizada com sucesso!");
                 setTimeout(() => {
                     navigate('/');
                 }, 1500);
             } else {
-                showNotification(response.data?.message || "Erro ao atualizar tarefa.", "error");
+                showNotification(response.data.message || "Erro ao atualizar tarefa.", "error");
             }
         } catch (error) {
             console.error("Erro ao atualizar tarefa:", error);

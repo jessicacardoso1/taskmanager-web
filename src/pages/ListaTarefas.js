@@ -41,6 +41,9 @@ function ListaTarefas() {
             const response = await api.get('/Tarefas');
             if (response.data.isSuccess) {
                 setTarefas(response.data.data);
+                if (response.data.message) {
+                    showNotification(response.data.message);
+                }
             } else {
                 showNotification(response.data.message || 'Erro ao carregar tarefas', 'error');
             }
@@ -61,14 +64,14 @@ function ListaTarefas() {
             setLoading(true);
             try {
                 const response = await api.delete(`/Tarefas/${id}`);
-                if (response.status === 204) {
+                if (response.data.isSuccess) {
                     setTarefas(tarefas => tarefas.filter(t => t.id !== id));
-                    showNotification('Tarefa excluída com sucesso!');
-                } else if (response.status === 404) {
-                    showNotification('Tarefa não encontrada.', 'error');
-                    await carregarTarefas();
+                    showNotification(response.data.message || 'Tarefa excluída com sucesso!');
                 } else {
-                    throw new Error('Falha ao excluir tarefa');
+                    showNotification(response.data.message || 'Erro ao excluir tarefa', 'error');
+                    if (response.data.message === 'Tarefa não encontrada.') {
+                        await carregarTarefas();
+                    }
                 }
             } catch (error) {
                 console.error('Erro ao excluir tarefa:', error);
@@ -235,4 +238,4 @@ function ListaTarefas() {
     );
 }
 
-export default ListaTarefas; 
+export default ListaTarefas;
