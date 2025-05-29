@@ -31,7 +31,7 @@ Sistema de gerenciamento de tarefas desenvolvido com React e Material-UI, integr
 
 1. Clone o repositório:
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
+git clone https://github.com/jessicacardoso1/taskmanager-web.git
 cd taskmanager-web
 ```
 
@@ -42,10 +42,12 @@ npm install
 yarn install
 ```
 
-3. Configure o arquivo `.env` na raiz do projeto:
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
+3. Configure a URL da API:
+   - Abra o arquivo `src/services/api.js`
+   - Altere a `baseURL` para a URL da sua API:
+   ```javascript
+   baseURL: 'https://localhost:7005/api'  // Altere para a URL da sua API
+   ```
 
 4. Inicie o projeto:
 ```bash
@@ -69,7 +71,7 @@ taskmanager-web/
 │   │   ├── CreateTarefa.js    # Formulário de criação
 │   │   └── EditarTarefa.js    # Formulário de edição
 │   ├── services/
-│   │   └── api.js            # Configuração do Axios
+│   │   └── api.js            # Configuração do Axios e URL da API
 │   ├── theme.js              # Tema personalizado do Material-UI
 │   ├── App.js                # Componente principal e rotas
 │   └── index.js              # Ponto de entrada da aplicação
@@ -113,7 +115,7 @@ O frontend se integra com uma API ASP.NET Core através dos seguintes endpoints:
 ## 🎨 Tema e Estilização
 
 - Cores consistentes para status:
-  - �� Laranja: Pendente
+  - 🟠 Laranja: Pendente
   - 🔵 Azul: Em Progresso
   - 🟢 Verde: Concluída
 - Interface moderna com Material-UI
