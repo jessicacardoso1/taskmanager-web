@@ -124,10 +124,8 @@ O frontend se integra com uma API ASP.NET Core através dos seguintes endpoints:
 
 ## 📦 Scripts Disponíveis
 
-- `npm start`: Inicia o servidor de desenvolvimento
-- `npm build`: Cria a versão de produção
-- `npm test`: Executa os testes
-- `npm eject`: Ejeta as configurações do Create React App
+- `npm start` ou `yarn start`: Inicia a aplicação em modo de desenvolvimento (http://localhost:3000)
+- `npm run build` ou `yarn build`: Gera uma versão otimizada para produção na pasta `build`
 
 ## 👥 Contribuição
 
